@@ -4,16 +4,18 @@ import string
 
 
 SHORT_URL_LENGTH = 6
-# 64 possibilities for each character, 64^SHORT_URL_LENGTH
+# @$ 64 possibilities for each character, 64^SHORT_URL_LENGTH
 SHORT_URL_CHARACTERS = ''.join(
     string.ascii_letters + string.digits+'+/')
+
 RELATIVE_URL = 'http://localhost:8000/s/'
 
 
 class UsedUrlData(models.Model):
     url = models.CharField(max_length=255)
-    # for 67 bilion possibilities
+    # @$ size is six for 67 bilion possibilities because there are 64 characters
     short_url = models.CharField(max_length=SHORT_URL_LENGTH, unique=True)
+    # @$ returns the shortend url, and set the key for the long url
 
     def get_short_url(self):
         short_url = self.generate_short_url()

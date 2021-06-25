@@ -7,14 +7,7 @@ import sys
 import json
 
 
-def index(request):
-    form = Url()
-    context = {
-        'form': form,
-    }
-    return render(request, 's/index.html', context)
-
-
+# @$ create api
 def urlShort(request):
     if request.method == 'POST':
         # @$ in order to process the curl post request
@@ -28,9 +21,11 @@ def urlShort(request):
         new_url_object.save()
         return HttpResponse(new_url)
     else:
+        # @$ create url is only for post requests
         return Http404()
 
 
+# @$ render short url to original url
 def urlRedirect(request, short_url):
     try:
         data = UsedUrlData.objects.get(short_url=short_url)

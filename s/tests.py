@@ -11,8 +11,7 @@ SHORT_URL_LENGTH = 6
 RELATIVE_URL = 'http://localhost:8000/s/'
 
 class TestUsedUrlData(TestCase):
-    def setUp(self):
-        pass
+    
 
     def test_create_url_data(self):
         new_url_object = UsedUrlData(url=LONG_URL2)
